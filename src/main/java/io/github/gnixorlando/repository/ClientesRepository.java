@@ -1,4 +1,4 @@
-package io.github.gnixorlando.repository;
+package io.github.gnixorlando.service;
 
 import io.github.gnixorlando.model.Cliente;
 import org.springframework.stereotype.Repository;

@@ -1,24 +1,26 @@
 package io.github.gnixorlando.service;
 
 import io.github.gnixorlando.model.Cliente;
-import io.github.gnixorlando.repository.ClientesRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import io.github.gnixorlando.service.ClientesRepository;
 
-@Service
 public class ClienteService {
-    private ClientesRepository repository;
+    @Service
+    public class ClientesService {
 
-    @Autowired
-    public ClienteService (ClientesRepository repository) {
-        this.repository=repository;
+        private ClientesRepository repository;
+
+        public ClientesService(ClientesRepository repository) {
+            this.repository = repository;
+        }
+
+        public void salvarCliente(Cliente cliente) {
+            validarCliente(cliente);
+            this.repository.persistir(cliente);
+        }
+
+        public void validarCliente(Cliente cliente) {
+
+        }
     }
-
-    public void salvarCliente (Cliente cliente) {
-        validarCliente(cliente);
-        this.repository.persistir(cliente);
 }
-
-    private void validarCliente(Cliente cliente) {
-
-    }
