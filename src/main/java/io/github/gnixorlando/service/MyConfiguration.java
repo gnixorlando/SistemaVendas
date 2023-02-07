@@ -1,4 +1,4 @@
-package io.github.gnixorlando;
+package io.github.gnixorlando.service;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
