@@ -47,12 +47,22 @@ public class Clientes {
     }
 
     public List<Cliente> buscarPorNome (String nome) {
-        return jdbcTemplate.query(SELECT_POR_NOME)
+        return jdbcTemplate.query(
 
+                SELECT_ALL.concat(" where nome like ? "),
+                new Object[]{"%" + nome + "%"},
+                getClienteRowMapper());
 
     }
     public List<Cliente> obterTodos () {
-        return jdbcTemplate.query(SELECT_ALL, new RowMapper<Cliente>() {
+        return jdbcTemplate.query(SELECT_ALL, getClienteRowMapper());
+
+    }
+
+
+
+    private static RowMapper<Cliente> getClienteRowMapper() {
+        return new RowMapper<Cliente>() {
             @Override
             public Cliente mapRow(ResultSet rs, int rowNum) throws SQLException {
 
@@ -61,7 +71,6 @@ public class Clientes {
                 return new Cliente(id, nome);
 
             }
-        });
-
+        };
     }
 }
