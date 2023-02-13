@@ -1,8 +1,15 @@
 package io.github.gnixorlando.domain.entity;
 
+
+import javax.persistence.*;
+
+@Entity
 public class Cliente {
+    @Id
+    @GeneratedValue (strategy = GenerationType.AUTO)
 
     private Integer id;
+    @Column (name = "nome", length = 100)
     private String nome;
 
     public Cliente () {
