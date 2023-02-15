@@ -1,10 +1,19 @@
 package io.github.gnixorlando.domain.entity;
 
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import java.math.BigDecimal;
 
 public class Produto {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
     private String descricao;
+
+    @Column(value = "preco_unitario")
     private BigDecimal preco;
 
     public Integer getId() {

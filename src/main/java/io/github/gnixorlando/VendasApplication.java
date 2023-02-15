@@ -23,6 +23,11 @@ public class VendasApplication {
             clientes.save(new Cliente("Matheus"));
             clientes.save(new Cliente("Junior"));
 
+            Boolean existe = clientes.existsByNome("Matheus");
+            System.out.println("Existe um cliente com o nome inserido? " + existe);
+
+            Boolean existe1 = clientes.existsById(2);
+            System.out.println("Existe esse ID ?" + existe1);
 
             List<Cliente> todosClientes = clientes.findAll();
             todosClientes.forEach(System.out::println);
