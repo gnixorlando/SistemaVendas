@@ -7,10 +7,24 @@ import javax.persistence.*;
 public class Cliente {
     @Id
     @GeneratedValue (strategy = GenerationType.AUTO)
-
     private Integer id;
+
+
     @Column (name = "nome", length = 100)
     private String nome;
+
+
+    @OneToMany(mappedBy = "cliente" )
+    private Set<Pedido> pedidos;
+
+
+    public Set<Pedido> getPedidos() {
+        return pedidos;
+    }
+
+    public void setPedidos(Set<Pedido> pedidos) {
+        this.pedidos = pedidos;
+    }
 
     public Cliente () {
 
@@ -24,6 +38,7 @@ public class Cliente {
     public Cliente (String nome) {
         this.nome=nome;
     }
+
     public Integer getId() {
         return id;
     }

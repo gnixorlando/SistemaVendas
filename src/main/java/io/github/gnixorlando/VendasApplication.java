@@ -2,7 +2,7 @@ package io.github.gnixorlando;
 
 
 import io.github.gnixorlando.domain.entity.Cliente;
-import io.github.gnixorlando.domain.repositorio.Clientes;
+import io.github.gnixorlando.domain.repository.Clientes;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
