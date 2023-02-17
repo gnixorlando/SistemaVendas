@@ -2,6 +2,8 @@ package io.github.gnixorlando.domain.entity;
 
 
 import javax.persistence.*;
+import java.util.Set;
+
 
 @Entity
 public class Cliente {
@@ -16,7 +18,6 @@ public class Cliente {
 
     @OneToMany(mappedBy = "cliente" )
     private Set<Pedido> pedidos;
-
 
     public Set<Pedido> getPedidos() {
         return pedidos;

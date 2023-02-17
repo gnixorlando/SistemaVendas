@@ -1,11 +1,13 @@
 package io.github.gnixorlando.domain.entity;
 
+import javax.persistence.*;
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.math.BigDecimal;
 
+@Entity
 public class Produto {
 
     @Id
@@ -13,7 +15,7 @@ public class Produto {
     private Integer id;
     private String descricao;
 
-    @Column(value = "preco_unitario")
+    @Column(name = "PRECO_UNITARIO")
     private BigDecimal preco;
 
     public Integer getId() {
