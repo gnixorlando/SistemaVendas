@@ -1,20 +1,36 @@
 package io.github.gnixorlando.rest.controller;
 
+import io.github.gnixorlando.domain.entity.Cliente;
+import io.github.gnixorlando.domain.repository.Clientes;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Optional;
 
 @Controller
-@RequestMapping ("/api/clientes")
 public class ClienteController {
-    @RequestMapping (value = "/hello/{nome}", method = RequestMethod.GET)
-    //posso substituir a anotation requestmapping com method get por - > GetMapping//
+    private Clientes clientes;
+
+    public ClienteController(Clientes clientes) {
+        this.clientes = clientes;
+    }
+
+    @GetMapping("/api/clientes/{id}")
     @ResponseBody
-    public String helloCliente( @PathVariable ("nome") String nomeCliente) {
-        return String.format("Hello %s ", nomeCliente);
+    public ResponseEntity getClienteById (@PathVariable Integer id) {
+        Optional<Cliente> cliente = clientes.findById(id);
+        if (cliente.isPresent()) {
+            return  ResponseEntity.ok(cliente.get());
+        }
+        return ResponseEntity.notFound().build();
     }
 
 
+    @PostMapping("/api/clientes")
+    @ResponseBody
+    public ResponseEntity save (@RequestBody Cliente cliente) {
+        Cliente clienteSalvo = clientes.save(cliente);
+        return ResponseEntity.ok(clienteSalvo);
+    }
 }
