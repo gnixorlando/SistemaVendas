@@ -4,6 +4,7 @@ package io.github.gnixorlando.domain.entity;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+import org.springframework.validation.annotation.Validated;
 
 import javax.persistence.*;
 import java.util.Set;
@@ -21,6 +22,7 @@ public class Cliente {
 
     @Column (name = "nome", length = 100)
     private String nome;
+
 
     @Column (name = "cpf", length = 11)
     private String cpf;
