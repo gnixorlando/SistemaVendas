@@ -1,19 +1,17 @@
 package io.github.gnixorlando.domain.entity;
 
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
 
-@Getter
-@Setter
-@Entity
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 @Table
-@ToString
+@Entity
 public class Pedido {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -33,13 +31,5 @@ public class Pedido {
 
     @OneToMany(mappedBy = "pedido")
     private List<ItemPedido> itens;
-
-    public List<ItemPedido> getItens() {
-        return itens;
-    }
-
-    public void setItens(List<ItemPedido> itens) {
-        this.itens = itens;
-    }
 
 }

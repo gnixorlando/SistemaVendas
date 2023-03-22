@@ -1,12 +1,12 @@
 package io.github.gnixorlando.domain.entity;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 
-@Getter
-@Setter
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Table(name = "item_pedido")
 public class ItemPedido {
@@ -26,8 +26,5 @@ public class ItemPedido {
     @Column
     private Integer quantidade;
 
-    public Integer getId() {
-        return id;
-    }
     
 }
