@@ -8,6 +8,8 @@ import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 
 @Entity
@@ -19,9 +21,11 @@ public class Produto {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
+    @NotEmpty(message = "Campo Descrição é obrigatório!")
     private String descricao;
 
     @Column(name = "PRECO_UNITARIO")
+    @NotNull(message = "Campo Preço é obrigatório!")
     private BigDecimal preco;
 
 }
